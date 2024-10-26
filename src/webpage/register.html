@@ -23,6 +23,29 @@
             align-items: center;
             text-align: center;
         }
+        #logindiv {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 400px;
+        }
+        input, button {
+            border-radius: 12px;
+            padding: 10px;
+            width: 100%;
+            margin-top: 10px;
+        }
+        button {
+            background-color: #EBA110;
+            border: 2px solid black;
+            cursor: pointer;
+        }
+        a {
+            display: block;
+            margin-top: 20px;
+            color: #0000EE;
+        }
     </style>
 </head>
 <body class="Dark-theme">
@@ -31,7 +54,8 @@
         <form id="register" submit="registertry(e)">
             <div>
                 <label for="instance"><b>Instance:</b></label><br>
-                <input type="text" placeholder="Instance URL" id="instancein" name="instance" value="https://chat.quizzity.tech/" readonly>
+                <p id="verify"></p>
+                <input type="search" list="instances" placeholder="Instance URL" id="instancein" name="instance" value="https://chat.quizzity.tech/" readonly>
             </div>
             <div>
                 <label for="uname"><b>Email:</b></label><br>
