@@ -9,13 +9,20 @@
             margin: 0;
             padding: 0;
             font-family: 'Times New Roman', Times, serif;
-            background: linear-gradient(45deg, blue, turquoise, purple, green);
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
+            background: linear-gradient(45deg, blue, turquoise, purple, green);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         .header {
             width: 90%;
@@ -38,7 +45,7 @@
             gap: 10px;
         }
         .header .nav-buttons button {
-            background-color: #FFEA03;
+            background-color: #ffb54d;
             border: 2px solid black;
             border-radius: 12px;
             padding: 10px 20px;
@@ -66,6 +73,14 @@
             padding: 10px 20px;
             cursor: pointer;
         }
+        .login-redirect {
+            background-color: #ffb54d;
+            border: 2px solid black;
+            border-radius: 12px;
+            padding: 10px 20px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -84,6 +99,7 @@
             <button onclick="window.location.href='register.html'">Register</button>
             <button onclick="window.location.href='https://downloads.quizzity.tech'">Downloads</button>
         </div>
+        <button class="login-redirect" onclick="window.location.href='/@me'">Already Logged in? Press here!</button>
     </div>
 </body>
 </html>
