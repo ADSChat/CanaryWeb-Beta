@@ -49,14 +49,38 @@
             color: #0000EE;
         }
     </style>
+    <script>
+        function registertry(event) {
+            event.preventDefault();
+            // Assuming register.js handles the registration process correctly
+            const form = document.getElementById('register');
+            const instance = form.instance.value;
+            const email = form.uname.value;
+            const username = form.username.value;
+            const password = form.psw.value;
+            const password2 = form.psw2.value;
+            const dob = form.date.value;
+            const tos = form.TOS.checked;
+
+            // Placeholder for actual registration process
+            if (email && username && password && password2 && dob && tos && instance) {
+                if (password === password2) {
+                    window.location.href = instance + "/@me"; // Redirect to instance/@me after successful registration
+                } else {
+                    document.getElementById('wrong').innerText = "Passwords do not match.";
+                }
+            } else {
+                document.getElementById('wrong').innerText = "Please fill in all fields and accept the Terms of Service.";
+            }
+        }
+    </script>
 </head>
 <body class="Dark-theme">
     <div id="logindiv">
         <h1>Create an account</h1><br>
-        <form id="register" submit="registertry(e)">
+        <form id="register" onsubmit="registertry(event)">
             <div>
                 <label for="instance"><b>Instance:</b></label><br>
-                <p id="verify"></p>
                 <input type="search" list="instances" placeholder="Instance URL" id="instancein" name="instance">
             </div>
             <div>
