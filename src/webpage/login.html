@@ -49,11 +49,28 @@
             color: #0000EE;
         }
     </style>
+    <script>
+        function logintry(event) {
+            event.preventDefault();
+            // Assuming login.js handles the login process correctly
+            const form = document.getElementById('login');
+            const instance = form.instance.value;
+            const username = form.uname.value;
+            const password = form.psw.value;
+
+            // Placeholder for actual login process
+            if (username && password && instance) {
+                window.location.href = instance + "/@me"; // Redirect to instance/@me after successful login
+            } else {
+                document.getElementById('wrong').innerText = "Please fill in all fields.";
+            }
+        }
+    </script>
 </head>
 <body class="Dark-theme">
     <div id="logindiv">
         <h1>Login to Canary Chat</h1><br>
-        <form id="login" submit="logintry(e)">
+        <form id="login" onsubmit="logintry(event)">
             <div>
                 <label for="instance"><b>Instance:</b></label><br>
                 <input type="search" list="instances" placeholder="Instance URL" id="instancein" name="instance">
