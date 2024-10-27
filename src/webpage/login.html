@@ -24,6 +24,7 @@
             background: linear-gradient(45deg, #C4E1F6, #FEEE91, #FFBD73, #FF9D3D);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
+            color: black;
         }
         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
@@ -56,17 +57,31 @@
         }
     </style>
     <script>
-        function logintry(event) {
+        async function logintry(event) {
             event.preventDefault();
-            // Assuming login.js handles the login process correctly
             const form = document.getElementById('login');
             const instance = form.instance.value;
             const username = form.uname.value;
             const password = form.psw.value;
 
-            // Placeholder for actual login process
             if (username && password && instance) {
-                window.location.href = instance + "/@me"; // Redirect to instance/@me after successful login
+                try {
+                    const response = await fetch(instance + '/login', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ username, password }),
+                    });
+                    if (response.ok) {
+                        window.location.href = instance + "/@me";
+                    } else {
+                        const result = await response.json();
+                        document.getElementById('wrong').innerText = result.message || "Login failed.";
+                    }
+                } catch (error) {
+                    document.getElementById('wrong').innerText = "An error occurred.";
+                }
             } else {
                 document.getElementById('wrong').innerText = "Please fill in all fields.";
             }
